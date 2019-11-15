@@ -38,9 +38,6 @@ public class Blog implements Serializable {
         this.priv = priv;
     }
 
-
-    Blog(){}
-
     public LocalDate getDate1() {
         return date1;
     }

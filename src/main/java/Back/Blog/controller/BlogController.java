@@ -34,7 +34,7 @@ public class BlogController {
     public List<Blog> userblog(Principal principal)
     {
         Users user = currentUserService.CurrentUser(principal).get();
-        return BlogRepo.findAllByUser(user);
+        return BlogRepo.findAllByUserOrderByDate1Desc(user);
     }
 
     @GetMapping("/get_viewblog/{BlogId}")
@@ -52,7 +52,12 @@ public class BlogController {
         Set<Blog> hSet = new HashSet<Blog>();
         for (Blog x : list1)
             hSet.add(x);
-
+        if(hSet.size() == 0)
+        {
+            Blog b1 = new Blog();
+            b1.setTitle("null");
+            hSet.add(b1);
+        }
         return hSet;
     }
 
@@ -64,10 +69,21 @@ public class BlogController {
         return list1;
     }
 
+    @GetMapping("/view_followUser/{username}")
+    public List<Blog> followUser(@PathVariable (value = "username") String name)
+    {
+        Users user = UsersRepo.findByUsername(name).get();
+        List<Blog> list1 = BlogRepo.findAllByUserOrderByDate1Desc(user);
+        return list1;
+    }
+
     @PostMapping("/post1")
     public Blog createNote(@Valid @RequestBody Blog user1 , Principal principal) {
 
         user1.setdate1();
+        Users u1 = UsersRepo.findByUsername(currentUserService.CurrentUser(principal).get().getUsername()).get();
+        u1.setBlogs(u1.getBlogs() + 1);
+        UsersRepo.save(u1);
         user1.setUser(currentUserService.CurrentUser(principal).get());
         return BlogRepo.save(user1);
     }

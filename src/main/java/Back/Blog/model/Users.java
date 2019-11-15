@@ -17,6 +17,36 @@ public class Users implements Serializable {
     private String role;
     private String phone;
     private String gender;
+    @Column( columnDefinition = " int default '0'")
+    private int followers ;
+    @Column( columnDefinition = " int default '0'")
+    private int following ;
+    @Column( columnDefinition = " int default '0'")
+    private int blogs ;
+
+    public int getBlogs() {
+        return blogs;
+    }
+
+    public void setBlogs(int blogs) {
+        this.blogs = blogs;
+    }
+
+    public int getFollowers() {
+        return followers;
+    }
+
+    public void setFollowers(int followers) {
+        this.followers = followers;
+    }
+
+    public int getFollowing() {
+        return following;
+    }
+
+    public void setFollowing(int following) {
+        this.following = following;
+    }
 
     public String getRole() {
         return role;

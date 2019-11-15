@@ -21,4 +21,6 @@ public interface BlogRepository  extends JpaRepository<Blog,Long> {
 
 
     List<Blog> findAllByUserAndPrivOrderByDate1Desc(Users user, boolean b);
+
+    List<Blog> findAllByUserOrderByDate1Desc(Users user);
 }

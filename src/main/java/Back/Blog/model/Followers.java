@@ -10,9 +10,9 @@ public class Followers implements Serializable {
     @GeneratedValue( strategy = GenerationType.IDENTITY)
     private Long Fid;
     @ManyToOne
-    private Users User1;
+    private Users fser1;
     @ManyToOne
-    private Users Follower;
+    private Users follower;
 
     public Long getFid() {
         return Fid;
@@ -22,19 +22,19 @@ public class Followers implements Serializable {
         Fid = fid;
     }
 
-    public Users getUser1() {
-        return User1;
+    public Users getFser1() {
+        return fser1;
     }
 
-    public void setUser1(Users user1) {
-        User1 = user1;
+    public void setFser1(Users fser1) {
+        this.fser1 = fser1;
     }
 
     public Users getFollower() {
-        return Follower;
+        return follower;
     }
 
     public void setFollower(Users follower) {
-        Follower = follower;
+        this.follower = follower;
     }
 }

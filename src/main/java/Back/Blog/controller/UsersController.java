@@ -78,7 +78,13 @@ public class UsersController {
     @GetMapping("/searchUser/{search1}")
     public List<Users> search1(@PathVariable ( value = "search1") String name)
     {
-        return UsersRepo.findAllByUsernameContaining(name);
-
+        List <Users> list1 = UsersRepo.findAllByUsernameContaining(name);
+        if(list1.size() == 0)
+        {
+            Users u1 = new Users();
+            u1.setUsername("null");
+            list1.add(u1);
+        }
+        return list1;
     }
 }
