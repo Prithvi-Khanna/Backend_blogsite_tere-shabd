@@ -17,6 +17,37 @@ public class Blog implements Serializable {
     @ManyToOne
     private Users user;
     private boolean priv;
+    @Column( columnDefinition = " int default '0'")
+    private int likes;
+    @Column( columnDefinition = " int default '0'")
+    private int dislikes;
+    @Column( columnDefinition = " int default '0'")
+    private int comments;
+
+
+    public int getLikes() {
+        return likes;
+    }
+
+    public void setLikes(int likes) {
+        this.likes = likes;
+    }
+
+    public int getDislikes() {
+        return dislikes;
+    }
+
+    public void setDislikes(int dislikes) {
+        this.dislikes = dislikes;
+    }
+
+    public int getComments() {
+        return comments;
+    }
+
+    public void setComments(int comments) {
+        this.comments = comments;
+    }
 
     public Long getBlogId() {
         return BlogId;
